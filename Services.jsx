@@ -1,3 +1,10 @@
+// Scanner SVG icon (inline, since FA6 free has no scanner icon)
+const ScannerIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+    <path d="M4 6h16v2H4V6zm0 10h16v2H4v-2zm-2-5h20v2H2v-2zM6 3h12v2H6V3zm0 16h12v2H6v-2z"/>
+  </svg>
+)
+
 const services = [
   {
     icon: 'fa-solid fa-copy',
@@ -10,7 +17,8 @@ const services = [
     desc: 'Document, photo and presentation printing in both black & white and full color.',
   },
   {
-    icon: 'fa-solid fa-scanner-image',
+    icon: null,
+    svgIcon: <ScannerIcon />,
     title: 'Scanning',
     desc: 'Scan your documents, certificates and marksheets — with email delivery available.',
   },
@@ -41,11 +49,11 @@ const services = [
   },
 ]
 
-function ServiceCard({ icon, title, desc }) {
+function ServiceCard({ icon, svgIcon, title, desc }) {
   return (
     <div className="group bg-white rounded-2xl p-7 text-center shadow-sm border-2 border-transparent hover:border-primary hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(200,16,46,0.12)] transition-all duration-300 cursor-default">
       <div className="w-16 h-16 bg-primary-light rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-        <i className={icon} />
+        {svgIcon ? svgIcon : <i className={icon} />}
       </div>
       <h3 className="text-sm font-semibold text-gray-900 mb-2">{title}</h3>
       <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
